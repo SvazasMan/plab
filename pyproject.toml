@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "plab"
 version = "0.1.0"
-description = "TODO"
+description = "Python package containing tools related to Probability, Statistics and Machine Learning."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []

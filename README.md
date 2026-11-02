@@ -1,4 +1,5 @@
-## TODO
+## Project Information
+This is a package containing various tools from Probability, Stats, Machine Learning.
 
 ## Development setup
 
