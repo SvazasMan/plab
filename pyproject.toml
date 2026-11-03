@@ -25,3 +25,13 @@ testpaths = ["tests"]
 [tool.ruff]
 line-length = 88
 target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E7",   # Statement errors
+    "E9",   # Syntax errors
+    "F",    # Pyflakes
+    "I",    # Import sorting
+    "B",    # Bugbear: likely bugs
+    "UP",   # Python modernization
+]
