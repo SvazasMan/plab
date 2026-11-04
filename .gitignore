@@ -33,3 +33,6 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# MkDocs generated output
+site/
