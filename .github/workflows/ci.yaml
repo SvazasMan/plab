@@ -26,7 +26,7 @@ jobs:
           cache: pip 
 
       - name: Install package and dev tools
-        run: python -m pip install -e ".[dev]"
+        run: python -m pip install -e ".[dev, docs]"
 
       - name: Run tests
         run: python -m pytest -v
@@ -36,3 +36,6 @@ jobs:
 
       - name: Check Ruff formatting
         run: python -m ruff format --check .
+
+      - name: Build documentation
+        run: python -m mkdocs build --strict

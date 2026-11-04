@@ -1,0 +1,44 @@
+
+site_name: Probability Laboratory
+site_description: Probability, Statistics and Machine Learning in Python
+repo_url: https://github.com/SvazasMan/plab
+repo_name: SvazasMan/plab
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - content.code.copy
+    - search.suggest
+
+nav:
+  - Home: index.md
+  - Theory:
+      - Probability: theory/probability.md
+      - Statistics: theory/statistics.md
+      - Machine Learning: theory/machine-learning.md
+  - API Reference: api/index.md
+  - Examples: examples/index.md
+  - Documentation Conventions: conventions.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: google
+            show_source: true
+            show_root_heading: true
