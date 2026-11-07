@@ -1,0 +1,3 @@
+## Combinatorics
+
+::: plab.probability.combinatorics
