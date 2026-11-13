@@ -39,3 +39,45 @@ jobs:
 
       - name: Build documentation
         run: python -m mkdocs build --strict
+
+  package:
+    name: Build and validate distributions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install packaging tools
+        run: python -m pip install build twine
+
+      - name: Build wheel and sdist
+        run: python -m build
+
+      - name: Check distribution metadata
+        run: python -m twine check --strict dist/*
+
+      - name: Create clean test environment
+        run: python -m venv /tmp/plab-wheel-test
+
+      - name: Install built wheel
+        run: |
+          /tmp/plab-wheel-test/bin/python -m pip install dist/*.whl
+
+      - name: Smoke-test installed wheel
+        working-directory: /tmp
+        run: |
+          /tmp/plab-wheel-test/bin/python - <<'PY'
+          import plab
+          from plab.probability.combinatorics import combinations
+
+          assert plab.__version__ == "0.1.0"
+          assert combinations(5, 3) == 10
+
+          print("Installed wheel smoke test passed.")
+          PY
